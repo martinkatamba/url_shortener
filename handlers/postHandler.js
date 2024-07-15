@@ -7,17 +7,16 @@ const handlePostRequest = (path, data, req, res) => {
             
             generateShortURL(longUrl, 
                 (error) => {
-                    res.writeHead(500, { 'Content-Type': 'application/json' });
                     console.error(error);
+                    res.writeHead(500, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ error: "Internal Server Error" }));
                 }, 
                 (shortUrl) => {
                     res.writeHead(201, { 'Content-Type': 'application/json' });
-                    const response = {
+                    res.end(JSON.stringify({
                         shortUrl: shortUrl,
                         longUrl: longUrl
-                    };
-                    res.end(JSON.stringify(response));
+                    }));
                 }
             );
             break;
