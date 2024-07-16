@@ -29,6 +29,5 @@ services:
       - redis-data:/data
     command: ["redis-server", "--requirepass", "redis_password"] 
 
-
 volumes:
   redis-data:
