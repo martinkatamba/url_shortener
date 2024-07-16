@@ -1,5 +1,4 @@
 # URL Shortener
-
 A simple URL shortener service built with Node.js and Redis, using Docker for containerization. The service allows users to shorten long URLs and redirect to the original URL using the short URL.
 
 ## Table of Contents
