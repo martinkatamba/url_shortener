@@ -1,4 +1,5 @@
 const generateShortURL = require('../utils/generateShortURL');
+const { setValue } = require('../utils/redisService');
 
 const handlePostRequest = (path, data, req, res) => {
     switch (path) {
@@ -11,12 +12,23 @@ const handlePostRequest = (path, data, req, res) => {
                     res.writeHead(500, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify({ error: "Internal Server Error" }));
                 }, 
-                (shortUrl) => {
-                    res.writeHead(201, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({
-                        shortUrl: shortUrl,
-                        longUrl: longUrl
-                    }));
+                (shortUrl,id) => {
+                    
+                    setValue(id, longUrl)
+                    .then((result) => {
+                        console.log('Value set successfully:', result);
+                        res.writeHead(201, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({
+                            shortUrl: shortUrl,
+                            longUrl: longUrl
+                        }));
+                    })
+                    .catch((error) => {
+                        console.error('Error setting value:', error);
+                        res.writeHead(500, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ error: "Internal Server Error" }));
+                    });
+
                 }
             );
             break;

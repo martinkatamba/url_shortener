@@ -19,6 +19,8 @@ services:
       - REDIS_PASSWORD=redis_password 
     depends_on:
       - redis
+    networks:
+      - mynetwork 
 
   redis:
     image: redis/redis-stack:latest
@@ -28,6 +30,12 @@ services:
     volumes:
       - redis-data:/data
     command: ["redis-server", "--requirepass", "redis_password"] 
+    networks:
+      - mynetwork 
 
 volumes:
   redis-data:
+
+networks:
+  mynetwork:  # Define a custom network
+    driver: bridge

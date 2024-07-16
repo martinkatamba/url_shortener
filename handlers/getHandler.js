@@ -2,7 +2,7 @@ const verifyPath = require('../utils/verifyPath');
 const regenerateOriginalURL = require('../utils/regenerateOriginalURL');
 
 const handleGetRequest = (path, req, res) => {
-    const pathPattern = /^\/[a-zA-Z0-9]{6}$/;
+    const pathPattern = /^\/[a-zA-Z0-9_-]+$/;
 
     const sendResponse = (statusCode, message) => {
         res.writeHead(statusCode, { 'Content-Type': 'application/json' });
@@ -16,11 +16,11 @@ const handleGetRequest = (path, req, res) => {
         default:
             verifyPath(path, pathPattern, 
                 (errorMsg) => {
-                    sendResponse(404, { error: errorMsg });
+                    console.log(errorMsg);
+                    sendResponse(400, { error: errorMsg });
                 }, 
                 (validPath) => {
                     const shortId = validPath.substring(1);
-
                     regenerateOriginalURL(shortId, 
                         (error) => {
                             sendResponse(404, { error: error });

@@ -1,6 +1,6 @@
 const verifyPath = (path,pathPattern, errorCallback, successCallback) => {
     if (!pathPattern.test(path)){
-        errorMsg="Not Found"
+        errorMsg="Invalid Path"
         errorCallback(errorMsg)
     }else{
         successCallback(path)
