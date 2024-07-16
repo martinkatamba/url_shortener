@@ -1,12 +1,14 @@
+const { getValue } = require('./redisService');
 
-
-const regenerateOriginalURL = (shortId, errorCallback, successCallback) => {
-    try {
-        const longUrl = `https://www.example.com/some/long/url`;
-        successCallback(longUrl);
-    } catch (error) {
-        errorCallback(error);
-    }
+const  regenerateOriginalURL = async (shortId, errorCallback, successCallback) => {
+    
+        await getValue(shortId)
+        .then((longUrl) => {
+            successCallback(longUrl);
+        })
+        .catch((error) => {
+            errorCallback(error);
+        });
 };
 
 module.exports = regenerateOriginalURL;
