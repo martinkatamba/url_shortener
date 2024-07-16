@@ -14,7 +14,7 @@ A simple URL shortener service built with Node.js and Redis, using Docker for co
 
 ## Project Description
 
-This URL shortener service provides a simple REST API to create short URLs for long URLs and redirects users to the original URL when the short URL is accessed. The project uses Node.js for the backend, Redis for storage, and Docker for containerization.
+This URL shortener service provides a simple REST API to create short URLs for long URLs and redirects users to the original URL when the short URL is accessed. The project is running on Node.js runtime & written with Common JS , Redis was used for storage, and Docker for containerization.
 
 ## Prerequisites
 
