@@ -11,7 +11,6 @@ A simple URL shortener service built with Node.js and Redis, using Docker for co
 - [Architecture](#architecture)
 - [API Endpoints](#api-endpoints)
 - [Environment Variables](#environment-variables)
-- [CI CD Workflow](#ci-cd-workflow)
 - [License](#license)
 
 ## Project Description
@@ -96,76 +95,6 @@ Redirect to the original URL associated with the `shortId`.
 | `REDIS_PORT`     | Redis server port               | `6379`                 |
 | `REDIS_PASSWORD` | Redis server password           | `your_redis_password`  |
 
-
-## CI CD Workflow
-
-```mermaid
-graph TD;
-    
-    GIT[Developer Commits Code] -->|Push to Repository| CI/CD[CI/CD Pipeline]
-    CI/CD -->|Build| BUILD[Build Docker Image]
-    BUILD -->|Push to Registry| DOCKER[Docker Registry]
-    CI/CD -->|Run Tests| TESTS[Run Tests]
-    TESTS -->|Test Passed| DEPLOY[Deploy to Environment]
-```
-
-## AWS EC2 Deployment Diagram
-
-```mermaid
-graph TD;
-    A[Client Browser] -->|HTTP Requests| B[Application Load Balancer]
-    B[Application Load Balancer] -->|Routes Traffic| C[EC2 Instances: Node.js App]
-    C[EC2 Instances: Node.js App] -->|Access Redis| D[Amazon ElastiCache for Redis]
-    D[Amazon ElastiCache for Redis] -->|Data Visualization| E[EC2 Instance: RedisInsight]
-
-    subgraph AWS
-        B[Application Load Balancer]
-        C[EC2 Instances: Node.js App]
-        D[Amazon ElastiCache for Redis]
-        E[EC2 Instance: RedisInsight]
-    end
-
-    D[Amazon ElastiCache for Redis] --> F[S3: Redis Backup]
-
-```
-
-## GCP GCE Deployment Diagram
-
-```mermaid
-graph TD;
-    A2[Client Browser] -->|HTTP Requests| B2[Cloud Load Balancer]
-    B2[Cloud Load Balancer] -->|Routes Traffic| C2[GCE Instances: Node.js App]
-    C2[GCE Instances: Node.js App] -->|Access Redis| D2[Cloud Memorystore for Redis]
-    D2[Cloud Memorystore for Redis] -->|Data Visualization| E2[GCE Instance: RedisInsight]
-
-    subgraph GCP
-        B2[Cloud Load Balancer]
-        C2[GCE Instances: Node.js App]
-        D2[Cloud Memorystore for Redis]
-        E2[GCE Instance: RedisInsight]
-    end
-
-    D2[Cloud Memorystore for Redis] --> F2[Cloud Storage: Redis Backup]
-```
-
-## GKE Deployment
-
-```mermaid
-graph TD;
-    A2[Client Browser] -->|HTTP Requests| B2[Cloud Load Balancer]
-    B2[Cloud Load Balancer] -->|Routes Traffic| C2[GKE: Node.js App Pods]
-    C2[GKE: Node.js App Pods] -->|Access Redis| D2[Cloud Memorystore for Redis]
-    D2[Cloud Memorystore for Redis] -->|Data Visualization| E2[GKE: RedisInsight Pod]
-
-    subgraph GKE
-        B2[Cloud Load Balancer]
-        C2[GKE: Node.js App Pods]
-        D2[Cloud Memorystore for Redis]
-        E2[GKE: RedisInsight Pod]
-    end
-
-    D2[Cloud Memorystore for Redis] --> F2[Cloud Storage: Redis Backup]
-```
 
 ## License
 
