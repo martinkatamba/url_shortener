@@ -16,10 +16,21 @@ A simple URL shortener service built with Node.js and Redis, using Docker for co
 
 This URL shortener service provides a simple REST API to create short URLs for long URLs and redirects users to the original URL when the short URL is accessed. The project is running on Node.js runtime & written with Common JS , Redis was used for storage, and Docker for containerization.
 
+## Features
+
+- Shorten URLs
+- Redirect to original URLs
+- API key authentication
+- Redis for data storage
+- Dockerized for easy deployment
+- RedisInsight for visualizing Redis data
+
 ## Prerequisites
 
-- [Docker](https://www.docker.com/get-started) and Docker Compose installed on your machine.
-- Node.js and npm (for local development).
+- [Docker](https://www.docker.com/get-started).
+- Docker Compose installed on your machine.
+- Node.js and npm .
+- [Redis documentaion](https://redis.io/docs/latest/develop/).
 
 ## Installation
 
@@ -36,7 +47,7 @@ Create a .env file in the root directory and add the following variables:
 PORT=5000
 REDIS_HOST=redis
 REDIS_PORT=6379
-REDIS_PASSWORD=your_redis_password 
+REDIS_PASSWORD=redis_password 
 ```
 ### Build and Run with Docker 
 
@@ -52,6 +63,10 @@ curl -X POST http://localhost:5000/api/short-urls -H "Content-Type: application/
 
 ### Redirect to Original URL
 Visit `http://localhost:5000/<shortId>` in your browser.
+
+### Access RedisInsight
+Visit `http://localhost:5540` in your browser.
+Ensure that you connect to redis host`redis` not `localhost or 127.0.0.1`
 
 
 ## Architecture
@@ -92,7 +107,7 @@ Redirect to the original URL associated with the `shortId`.
 | `PORT`           | Port to run the server          | `5000`                 |
 | `REDIS_HOST`     | Redis server hostname           | `redis`                |
 | `REDIS_PORT`     | Redis server port               | `6379`                 |
-| `REDIS_PASSWORD` | Redis server password           | `your_redis_password`  |
+| `REDIS_PASSWORD` | Redis server password           | `redis_password`  |
 
 
 ## License
