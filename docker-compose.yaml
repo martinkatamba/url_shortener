@@ -32,9 +32,22 @@ services:
     command: ["redis-server", "--requirepass", "redis_password"] 
     networks:
       - mynetwork 
+  
+  redis-insight:
+    image: redis/redisinsight:latest
+    restart: always
+    ports:
+      - "5540:5540"
+    volumes:
+      - redis-insight:/data
+    depends_on:
+      - redis
+    networks:
+      - mynetwork 
 
 volumes:
   redis-data:
+  redis-insight:
 
 networks:
   mynetwork:  # Define a custom network
