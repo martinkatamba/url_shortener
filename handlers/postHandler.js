@@ -3,7 +3,7 @@ const { setValue } = require('../utils/redisService');
 
 const handlePostRequest = (path, data, req, res) => {
     switch (path) {
-        case "/api/short-urls":
+        case "/api/v1/short-urls":
             const longUrl = data["longUrl"];
             
             generateShortURL(longUrl, 

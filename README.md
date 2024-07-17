@@ -58,7 +58,7 @@ docker-compose up --build
 
 ### Shorten URL
 ```sh 
-curl -X POST http://localhost:5000/api/short-urls -H "Content-Type: application/json" -d '{"longUrl": "http://example.com"}'
+curl -X POST http://localhost:5000/api/v1/short-urls -H "Content-Type: application/json" -d '{"longUrl": "http://example.com"}'
 ```
 
 ### Redirect to Original URL
