@@ -30,7 +30,7 @@ This URL shortener service provides a simple REST API to create short URLs for l
 - [Docker](https://www.docker.com/get-started).
 - Docker Compose installed on your machine.
 - Node.js and npm .
-- [Redis documentaion](https://redis.io/docs/latest/develop/).
+- [Redis documentation](https://redis.io/docs/latest/develop/).
 
 ## Installation
 
