@@ -10,7 +10,7 @@ const handleGetRequest = (path, req, res) => {
     };
 
     switch (path) {
-        case "/api":
+        case "/api/v1":
             sendResponse(200, { msg: "Service is up & running ..." });
             break;
         default:
